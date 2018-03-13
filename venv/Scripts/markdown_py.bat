@@ -1,0 +1,1 @@
+@"g:\pituber\venv\scripts\python.exe" "g:\pituber\venv\Scripts\markdown_py" %*

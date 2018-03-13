@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Flasky{% endblock %}
+
+
+{% block page_content %}
+<div class="page-header">
+    <h1>道之所在，虽千万人在前，吾独往矣</h1>
+</div>
+<ul class="posts">
+    {% for post in posts %}
+    <li class="post">
+        <div class="post-content">
+            <div class="post-body">
+                {% if post.body_html %}
+                    {{ post.body_html | safe }}
+                {% else %}
+                <h3>
+                    {{ post.body }}
+                </h3>
+                    {{ post.body }}
+                {% endif %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

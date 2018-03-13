@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+    <h1>道之所在，虽千万人在前，吾独往矣</h1>
+</div>
+<ul class="names">
+    {% for name in names %}
+<li>
+    <a href="{{ url_for('category', name=name.name)}}">{{ name.name }}</a>
+</li>
+    {% endfor %}
+</ul>
+<ul class="posts">
+    {% for post in posts %}
+    <li class="post">
+        <div class="post-content">
+            <div class="post-body">
+                {% if post.body_html %}
+                    {{ post.body_html | safe }}
+                {% else %}
+                <h3>
+                    {{ post.body }}
+                </h3>
+                    {{ post.body }}
+                {% endif %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<ul class="posts">
+     {% for post in posts %}
+    <li class="post">
+<div class="row">
+    <div class="col-sm-6 col-md-3">
+        <a href="http://aljun.me/" class="thumbnail">
+            <img src='https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=4128445255,2124620127&fm=173&s=D8783CC7CE1208C4250E72330300A054&w=218&h=146&img.JPEG'
+                 alt="图片无法显示">
+        </a>
+    </div>
+	<div class="col-sm-6 col-md-6">
+		<a href="http://aljun.me/">
+		<h2>我是标题2 h2</h2>
+		</a>
+		叫做春风亭。很多人猜测这是因为他自幼住在春风亭横二街的关系，敌人们则是暗自嘲讽，
+	</div>
+</div>
+        </li>
+    {% endfor %}
+ </ul>
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endif %}
+{% endblock %}
+
